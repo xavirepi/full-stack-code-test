@@ -48,6 +48,7 @@ You are recommended to use **ReactJS** to create the frontend, but you are free 
 
 ### Notes and recommendations
 
+* Fork the repo and start working on yours
 * The languages, frameworks and libraries mentioned are recommendations only, you are free to use whatever you are comfortable with.
 * The project structure is up to you to decide
 * You are recommended to use git commits in a logical manner to demonstrate the development progress

@@ -51,4 +51,5 @@ You are recommended to use **ReactJS** to create the frontend, but you are free 
 * The languages, frameworks and libraries mentioned are recommendations only, you are free to use whatever you are comfortable with.
 * The project structure is up to you to decide
 * You are recommended to use git commits in a logical manner to demonstrate the development progress
+* Deploying to a PAAS like Heroku would be awesome to check how it works
 * Writing tests and adhering to development standards/conventions will let you gain extra points :)

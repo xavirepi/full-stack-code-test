@@ -46,6 +46,21 @@ Implement a small frontend application to consume the API you developed above.
 The frontend should be able to show a list of names of the books available in the database. Upon clicking the name of a book on the list, the user should be navigated to a more detailed view of the selected book, where they are presented with the ISBN and the author details. You should also implement two forms where the user is able to create/update authors and books (using the POST and PUT endpoints)
 You are recommended to use **ReactJS** to create the frontend, but you are free to use a different Javascript framework.
 
+## Purpose
+
+* Evaluate your coding abilities
+* Judge your technical experience
+* Understand how you design a solution
+
+## How you will be judged
+
+You will be scored on,
+
+* Coding standard, comments and style
+* Overall solution design
+* Appropriate use of source control
+* Unit testing strategy (if present)
+
 ### Notes and recommendations
 
 * Fork the repo and start working on yours

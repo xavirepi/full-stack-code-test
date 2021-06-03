@@ -9,16 +9,16 @@ There is no need to create a PR back to this repository once completed, please p
 Use the following structure to model the data
 
 ```
-class Author(Model):
-    first_name = models.TextField()
-    last_name = models.TextField()
+Author(Model):
+    first_name: TextField
+    last_name: TextField
 ```
 
 ```
-class Book(Model):
-    name = models.TextField()
-    isbn = models.TextField()
-    author = models.ForeignKey(Author)
+Book(Model):
+    name: TextField
+    isbn: TextField
+    author: ForeignKey(Author)
 ```
 
 Implement the following API endpoints:

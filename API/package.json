@@ -1,10 +1,21 @@
 {
-  "name": "API",
+  "name": "Full-Stack-Code-Test-API",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app.js",
+    "dev": "DEBUG=amahack-api:* nodemon ./app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0"
   },
   "keywords": [],
   "author": "",

@@ -2,7 +2,16 @@
 
 .App {
   text-align: center;
-  background-color: $primary-color;
+  background-color: $terciary-color;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 2rem;
+  border-radius: 2rem;
+  
+  &__content {
+    padding: 1rem 4rem;
+  }
+
   &__logo {
     height: 40vmin;
     pointer-events: none;
@@ -25,7 +34,7 @@
   }
   
   &__link {
-    color: #61dafb;
+    color: $link-color;
   }
   
   @keyframes App-logo-spin {

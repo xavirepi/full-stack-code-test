@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.scss';
 
+import Authors from './views/Authors/Authors.jsx';
+import Books from './views/Books/Books.jsx';
+
 function App() {
   return (
     <div className="App">
-      <header className="App__header">
+      {/* <header className="App__header">
         <img src={logo} className="App__logo" alt="logo" />
         <p>
           Soamee Test
@@ -17,7 +20,11 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+      <main className="App__content">
+        <Authors/>
+        {/* <Books/> */}
+      </main>
     </div>
   );
 }

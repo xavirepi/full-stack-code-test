@@ -1,9 +1,16 @@
-import { create } from './BaseService';
+import axios from 'axios';
+// import { create } from './BaseService';
 
-const http = create();
+// const http = create();
+
+const http = axios.create({
+  baseURL: 'http://localhost:3001/api'
+});
+
+http.interceptors.response.use(response => response.data)
 
 export const getAllAuthors = () => {
-  return http.get('/authors/', );
+  return http.get('/authors/');
 }
 
 export const getOneAuthor = (id) => {

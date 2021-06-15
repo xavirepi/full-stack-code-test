@@ -4,19 +4,19 @@ require('./Author.model')
 
 const bookSchema = mongoose.Schema(
   {
-  name: {
-    type: String,
-    required: true
-  },
-  isbn: {
-    type: String,
-    required: true
-  },
-  author: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: 'Author',
-    required: 'An author needs to be referenced'
-  }
+    name: {
+      type: String,
+      required: 'A title is required'
+    },
+    isbn: {
+      type: String,
+      required: 'An isbn code is required'
+    },
+    author: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Author',
+      required: 'An author needs to be referenced'
+    }
   }, 
   {
     timestamps: true,

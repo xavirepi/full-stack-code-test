@@ -5,7 +5,7 @@ const authorController = require('../controllers/author.controller');
 
 /* Book Routes */
 router.get('/books/', bookController.getAllBooks);
-router.get('/books/:id/', bookController.getOneBook);
+router.get('/book/:id/', bookController.getOneBook);
 router.post('/book/', bookController.addBook);
 router.put('/book/:id/', bookController.updateBook);
 

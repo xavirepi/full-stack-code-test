@@ -5,7 +5,7 @@ const authorSchema = mongoose.Schema(
   {
     first_name: {
       type: String,
-      required: true
+      required: 'A name is required'
     },
     last_name: {
       type: String
@@ -18,7 +18,7 @@ const authorSchema = mongoose.Schema(
       transform: (doc, ret) => {
         ret.id = doc._id;
         delete ret._id;
-        delete ret._v;
+        delete ret.__v;
         return ret;
       },
     },

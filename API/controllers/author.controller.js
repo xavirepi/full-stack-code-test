@@ -2,7 +2,9 @@ const createError = require('http-errors');
 const Author = require('../models/Author.model');
 
 module.exports.getAllAuthors = (req, res, next) => {
-  // Returns a list of authors in the database in JSON format
+  Author.find({})
+    .then(authors => res.json(authors))
+    .catch(next);
 }
 
 module.exports.getOneAuthor = (req, res, next) => {

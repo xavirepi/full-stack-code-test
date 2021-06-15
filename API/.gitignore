@@ -109,6 +109,7 @@ typings/
 
 # dotenv environment variables file
 .env
+./API/.env
 .env.test
 .env*.local
 

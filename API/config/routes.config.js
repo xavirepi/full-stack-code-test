@@ -4,10 +4,10 @@ const bookController = require('../controllers/book.controller');
 const authorController = require('../controllers/author.controller');
 
 /* Book Routes */
-router.get('/books/', );
-router.get('/books/:id/', );
-router.post('/book/', );
-router.put('/book/:id/', );
+router.get('/books/', bookController.getAllBooks);
+router.get('/books/:id/', bookController.getOneBook);
+router.post('/book/', bookController.addBook);
+router.put('/book/:id/', bookController.updateBook);
 
 /* Author Routes */
 router.get('/authors/', authorController.getAllAuthors);

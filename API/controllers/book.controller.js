@@ -9,7 +9,7 @@ module.exports.getAllBooks = (req, res, next) => {
     .then(AllBooks => {
       !AllBooks ?
       next(createError(404, 'No books found')) :
-      res.status(302).json(AllBooks);
+      res.status(200).json(AllBooks);
     })
     .catch(next);
 }
@@ -21,7 +21,7 @@ module.exports.getOneBook = (req, res, next) => {
     .then(foundBook => {
       !foundBook ?
       next(createError(404, 'Book not found')) :
-      res.status(302).json(foundBook);
+      res.status(200).json(foundBook);
     })
     .catch(next);
 }

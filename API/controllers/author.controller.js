@@ -7,7 +7,7 @@ module.exports.getAllAuthors = (req, res, next) => {
     .then(allAuthors => {
       !allAuthors ?
       next(createError(404, 'No authors found')) :
-      res.status(302).json(allAuthors);
+      res.status(200).json(allAuthors);
     })
     .catch(next);
 }
@@ -18,7 +18,7 @@ module.exports.getOneAuthor = (req, res, next) => {
     .then(foundAuthor => {
       !foundAuthor ?
       next(createError(404, 'Author not found')) :
-      res.status(302).json(foundAuthor);
+      res.status(200).json(foundAuthor);
     })
     .catch(next);
 }

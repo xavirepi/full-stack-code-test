@@ -39,4 +39,20 @@ module.exports.addAuthor = (req, res, next) => {
 
 module.exports.updateAuthor = (req, res, next) => {
   // Updates an existing author - Expects a JSON body
+  Author.findById(req.params.id)
+    .then(foundAuthor => {
+      if (!foundAuthor) {
+        next(createError(404, 'This author does not exist on the database'))
+      }
+
+      Object.entries(req.body).forEach(([key, value]) => {
+        foundAuthor[key] = value;
+      })
+
+      return foundAuthor.save()
+        .then(updatedAuthor => {
+          res.status(200).json(updatedAuthor)
+        })
+    })
+    .catch(next);
 }

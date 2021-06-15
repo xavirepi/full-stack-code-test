@@ -31,38 +31,51 @@ module.exports.addBook = (req, res, next) => {
   const { name, isbn, author } = req.body;
   const { first_name, last_name } = author;
 
-  console.log('req.body', req.body)
-  console.log('first_name: ', first_name, 'last_name: ', last_name)
-
   Book.findOne({isbn: req.body.isbn})
     .populate('author')
     .then(foundBook => {
-      console.log('found Book', foundBook)
       foundBook ?
-      next(createError(403, 'This Book already exists on the database')) :
+      next(createError(403, 'Invalid ISBN')) :
       Author.findOne({ $and: [{ first_name }, { last_name }] })
         .then(foundAuthor => {
           if (foundAuthor) {
-            console.log('found author', foundAuthor)
             Book.create({ name: name, isbn: isbn, author: foundAuthor._id })
               .then(createdBook => res.status(201).json(createdBook))
+              .catch(next);
           } else {
             Author.create({ 
-              first_name: author.first_name, 
+              first_name: first_name, 
               last_name: author.last_name
             })
               .then(createdAuthor => {
-                console.log('created Author', createdAuthor)
                 Book.create({ name: name, isbn: isbn, author: createdAuthor.id })
                   .then(createdBook => res.status(201).json(createdBook))
-              })     
+              })
+              .catch(next);     
           }
         })
-        .catch(next)
+        .catch(next);
     })
     .catch(next);
 }
 
 module.exports.updateBook = (req, res, next) => {
   // Updates an existing book - Expects a JSON body
+  Book.findById(req.params.id)
+    .then(foundBook => {
+      if (!foundBook) {
+        next(createError(404, 'This book does not exist on the database'))
+      }
+      
+      Object.entries(req.body).forEach(([key, value]) => {
+        console.log(req.body)
+        foundBook[key] = value;
+      })
+
+      return foundBook.save()
+        .then(updatedBook => {
+          res.status(200).json(updatedBook);
+        })
+    })
+    .catch(next);
 }

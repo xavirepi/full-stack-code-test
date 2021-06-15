@@ -10,7 +10,8 @@ const bookSchema = mongoose.Schema(
     },
     isbn: {
       type: String,
-      required: 'An isbn code is required'
+      required: 'An ISBN code is required',
+      unique: 'ISBN code must be unique'
     },
     author: {
       type: mongoose.SchemaTypes.ObjectId,

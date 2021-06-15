@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "200f8df2-762e-4f82-814a-057204bbe4b8",
+		"name": "Soamee-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "List All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/books/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/book/{{BOOK_ID}}/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"book",
+								"{{BOOK_ID}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Book",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{BOOK_TITLE}}\",\n    \"isbn\": \"{{ISBN}}\",\n    \"author\": {\n        \"first_name\": \"{{AUTHOR_FIRST_NAME}}\",\n        \"last_name\": \"{{AUTHOR_LAST_NAME}}\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/book/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"book",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{BOOK_TITLE}}\",\n    \"isbn\": \"{{ISBN}}\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/book/{{BOOK_ID}}/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"book",
+								"{{BOOK_ID}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "List All Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/authors/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"authors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/author/{{AUTHOR_ID}}/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"author",
+								"{{AUTHOR_ID}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Author",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"{{AUTHOR_FIRST_NAME}}\",\n    \"last_name\": \"{{AUTHOR_LAST_NAME}}\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/author/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"author",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Author",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"{{AUTHOR_FIRST_NAME}}\",\n    \"last_name\": \"{{AUTHOR_LAST_NAME}}\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/author/{{AUTHOR_ID}}/",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"author",
+								"{{AUTHOR_ID}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_API_URL",
+			"value": "http://localhost:3001/api"
+		},
+		{
+			"key": "AUTHOR_ID",
+			"value": "60c8dc8979f6306b70c445c3"
+		},
+		{
+			"key": "AUTHOR_FIRST_NAME",
+			"value": "J.K."
+		},
+		{
+			"key": "AUTHOR_LAST_NAME",
+			"value": "Rowling"
+		},
+		{
+			"key": "BOOK_ID",
+			"value": "60c8db42d0a3b66a16874f70"
+		},
+		{
+			"key": "BOOK_TITLE",
+			"value": "Harry Potter And"
+		},
+		{
+			"key": "ISBN",
+			"value": "978-04397025550"
+		}
+	]
+}

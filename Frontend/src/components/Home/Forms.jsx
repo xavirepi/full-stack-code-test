@@ -16,8 +16,8 @@ const Form = () => {
           Vestibulum aliquam efficitur est at dapibus. Nulla facilisi. 
           Cras condimentum auctor ipsum, eget vestibulum risus condimentum vel.
         </p>
-        <Link to='/books/create/'>Add New Book</Link>
-        <Link to='/authors/create/'>Add New Author</Link>
+        <Link to='/book/create/'>Add New Book</Link>
+        <Link to='/author/create/'>Add New Author</Link>
       </div>
     </div>
   );

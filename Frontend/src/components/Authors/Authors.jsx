@@ -25,7 +25,11 @@ const Authors = () => {
       ) : (
         authors.map(author => (
           <div className="Authors__list" key={author.id}>
-            <Link to={`/author/${author.id}`}><p>{author.first_name} {author.last_name}</p></Link> 
+            <Link to={`/author/${author.id}`}>
+              <p>
+                {author.first_name} {author.last_name}
+              </p>
+            </Link> 
           </div>
         ))
       )

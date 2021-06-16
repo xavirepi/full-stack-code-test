@@ -21,9 +21,7 @@ const AuthorDetail = () => {
   useEffect(() => {
     getAllBooks()
       .then(allBooks => {
-        console.log(allBooks)
-        let filteredBooks = allBooks.filter(book => book.author.id === id);
-        console.log(filteredBooks)
+        let filteredBooks = allBooks.filter(book => book.author.id === id); // Comes populated from DB
         setAuthorBooks(filteredBooks);
       })
   }, [id])

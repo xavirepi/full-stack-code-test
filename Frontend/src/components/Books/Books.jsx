@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import './Books.scss'
 
 import { getAllBooks } from '../../services/BookService.js';
@@ -24,7 +26,9 @@ const Books = () => {
       ) : (
         books.map(book => (
           <div className="Books__list" key={book.id}>
-            <p>{book.name}</p> 
+            <Link to={`/book/${book.id}`}>
+              <p>{book.name}</p> 
+            </Link>
           </div>
         ))
       )

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import './Authors.scss'
+
 import { getAllAuthors } from '../../services/AuthorService.js';
 import SyncLoader from "react-spinners/SyncLoader";
 
@@ -13,13 +15,16 @@ const Authors = () => {
 
   return (
     <div className="Authors">
+    <h1>All Authors</h1>
     { !authors ? (
         <div>
           <SyncLoader color='#351d5c'/>
         </div>
       ) : (
         authors.map(author => (
-          <p>{author.first_name}</p>
+          <div className="Authors__list" key={author.id}>
+            <p>{author.first_name} {author.last_name}</p> 
+          </div>
         ))
       )
     }

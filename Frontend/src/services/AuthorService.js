@@ -1,13 +1,6 @@
-import axios from 'axios';
-// import { create } from './BaseService';
+import { create } from './BaseService';
 
-// const http = create();
-
-const http = axios.create({
-  baseURL: 'http://localhost:3001/api'
-});
-
-http.interceptors.response.use(response => response.data)
+const http = create();
 
 export const getAllAuthors = () => {
   return http.get('/authors/');

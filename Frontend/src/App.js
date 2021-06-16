@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.scss';
 
 import Authors from './views/Authors/Authors.jsx';
@@ -22,8 +22,8 @@ function App() {
         </a>
       </header> */}
       <main className="App__content">
-        <Authors/>
-        {/* <Books/> */}
+        {/* <Authors/> */}
+        <Books/>
       </main>
     </div>
   );

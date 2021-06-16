@@ -11,7 +11,7 @@ const Books = () => {
 
   useEffect(() => {
     getAllBooks()
-      .then(response => setBooks(response))
+      .then(allBooks => setBooks(allBooks))
   }, [])
 
   return (

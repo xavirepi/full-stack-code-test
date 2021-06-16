@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import './Authors.scss'
 
 import { getAllAuthors } from '../../services/AuthorService.js';
@@ -23,7 +25,7 @@ const Authors = () => {
       ) : (
         authors.map(author => (
           <div className="Authors__list" key={author.id}>
-            <p>{author.first_name} {author.last_name}</p> 
+            <Link to={`/author/${author.id}`}><p>{author.first_name} {author.last_name}</p></Link> 
           </div>
         ))
       )

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Books = () => {
   return (
     <div className='card my-2'>
-      <img className='card-img-top' src='./assets/imgs/.png' alt='all-books-img'/>
+      <img className='card-img-top' src='./images/books.jpeg' alt='all-books-img'/>
       <div className='card-body'>
           <Link to='/books/'>All Books</Link>
           <p className='card-text text-justify'>

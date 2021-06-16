@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Form = () => {
   return (
     <div className='card my-2'>
-      <img className='card-img-top' src='./assets/imgs/.png' alt='all-books-img'/>
+      <img className='card-img-top' src='./images/add_book.jpeg' alt='add-books-and-authors-img'/>
       <div className='card-body'>
         <p className='card-text text-justify'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -16,8 +16,8 @@ const Form = () => {
           Vestibulum aliquam efficitur est at dapibus. Nulla facilisi. 
           Cras condimentum auctor ipsum, eget vestibulum risus condimentum vel.
         </p>
-        <Link to='/'>Add New Book</Link>
-        <Link to='/'>Add New Author</Link>
+        <Link to='/books/create/'>Add New Book</Link>
+        <Link to='/authors/create/'>Add New Author</Link>
       </div>
     </div>
   );

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { addBook } from '../../../services/BookService';
+
+// const ISBN_PATTERN = /^(?:ISBN(?:-1[03])?:? )?(?=[-0-9 ]{17}$|[-0-9X ]{13}$[0-9X]{10}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?(?:[0-9]+[- ]?){2}[0-9X]$/
 
 const validators = {
   title: value => {
@@ -16,8 +20,8 @@ const validators = {
     let message
 
     if (!value) {
-      message = 'ISBN is required'
-    } else if (value && value.length < 5) {
+      message = 'ISBN code is required'
+    } else if (value /*&& !value.match(ISBN_PATTERN)*/) {
       message = 'Please, provide a valid ISBN code'
     }
 
@@ -27,18 +31,12 @@ const validators = {
     let message
 
     if (!value) {
-      message = 'Author name or real nickname is required'
+      message = 'Author name or official nickname is required'
+    } else if (typeof value !== 'string') {
+      message = 'Please, provide a valid name'
     }
+
     return message
-  },
-  author_last_name: value => {
-    // let message
-
-    // if (!value) {
-    //   message = 'Please reference an author'
-    // }
-
-    // return message
   },
 }
 
@@ -55,7 +53,6 @@ const CreateBook = () => {
       title: validators.title(),
       isbn: validators.isbn(),
       author_first_name: validators.author_first_name(), 
-      author_last_name: validators.author_last_name(),
     }
   });
 
@@ -68,19 +65,25 @@ const CreateBook = () => {
   }
 
   const onSubmit = (e) => {
-    const { fields } = state;
     e.preventDefault();
 
+    const newBook = {
+      name: title,
+      isbn: isbn,
+      author: {
+        first_name: author_first_name,
+        last_name: author_last_name
+      }
+    }
+
     if (isValid()) {
-      addBook(fields)
+      addBook(newBook)
         .then(createdBook => push(`/book/${createdBook.id}`));
     }
   }
 
   const onChange = (e) => {
     const { name, value } = e.target;
-
-    console.log(e.target.value);
     
     setState(prevState => ({
       fields: {
@@ -141,7 +144,7 @@ const CreateBook = () => {
         <div className="mb-3">
           <label htmlFor="author_first_name" className="form-label">Author</label>
           <input
-              className={`form-control ${touched.author && errors.author_first_name ? 'is-invalid' : ''}`}
+              className={`form-control ${touched.author_first_name && errors.author_first_name ? 'is-invalid' : ''}`}
               type="text" id="author_first_name" name="author_first_name" placeholder='First Name...'
               value={author_first_name} onChange={onChange} onBlur={onBlur} onFocus={onFocus}
           />
@@ -149,7 +152,6 @@ const CreateBook = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="author_last_name" className="form-label">Author Last Name</label>
           <input
               className={`form-control ${touched.author_last_name && errors.author_last_name ? 'is-invalid' : ''}`}
               type="text" id="author_last_name" name="author_last_name" placeholder='Last Name...'
@@ -157,6 +159,9 @@ const CreateBook = () => {
           />
           <div className="invalid-feedback">{errors.author_last_name}</div>
         </div>
+        <small className="text-secondary">
+            Check the <Link to="/authors/">list of authors</Link> to check whether the author has been registered
+          </small>
 
         <button type="submit" className="btn btn-outline-primary" disabled={!isValid()}>
           Submit

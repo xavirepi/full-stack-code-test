@@ -21,9 +21,10 @@ const validators = {
 
     if (!value) {
       message = 'ISBN code is required'
-    } else if (value /*&& !value.match(ISBN_PATTERN)*/) {
-      message = 'Please, provide a valid ISBN code'
-    }
+    } 
+    // else if (value && !value.match(ISBN_PATTERN)) {
+    //   message = 'Please, provide a valid ISBN code'
+    // }
 
     return message
   },
@@ -119,6 +120,8 @@ const CreateBook = () => {
   const { errors } = state;
 
   return (
+    <>
+    <h1>Create New Book</h1>
     <div className="CreateBook mt-4 container d-flex justify-content-center">
       <form onSubmit={onSubmit} style={{ maxWidth: 500 }}>
         <div className="mb-3">
@@ -168,6 +171,7 @@ const CreateBook = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

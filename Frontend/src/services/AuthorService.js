@@ -15,5 +15,6 @@ export const addAuthor = (newAuthor) => {
 }
 
 export const updateAuthor = (updatedAuthor, id) => {
+  console.log(id)
   return http.put(`/author/${id}`, updatedAuthor);
 }

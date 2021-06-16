@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
+import SyncLoader from "react-spinners/SyncLoader";
 
 import { useParams } from 'react-router';
 import { getOneAuthor } from '../../../services/AuthorService';
-import SyncLoader from "react-spinners/SyncLoader";
 import { getAllBooks } from '../../../services/BookService';
 
 const AuthorDetail = () => {

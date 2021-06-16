@@ -4,7 +4,7 @@ import { useParams} from 'react-router-dom';
 import SyncLoader from "react-spinners/SyncLoader";
 
 import { getOneAuthor } from '../../../services/AuthorService';
-import CreateAuthorForm from './CreateAuthor';
+import AuthorForm from './AuthorForm';
 
 const EditAuthor = () => {
   const [authorToEdit, setAuthorToEdit] = useState()
@@ -25,7 +25,7 @@ const EditAuthor = () => {
         ) : (
           <>
             <h1>Edit Author: {authorToEdit.first_name} {authorToEdit.last_name}</h1>
-            <CreateAuthorForm 
+            <AuthorForm 
               author_name={authorToEdit.first_name}
               author_last_name={authorToEdit.last_name}
               authorToEdit_id={id}

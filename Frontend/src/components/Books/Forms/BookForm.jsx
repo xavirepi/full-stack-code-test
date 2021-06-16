@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { addBook } from '../../../services/BookService';
+import { addBook, updateBook } from '../../../services/BookService';
 
 // const ISBN_PATTERN = /^(?:ISBN(?:-1[03])?:? )?(?=[-0-9 ]{17}$|[-0-9X ]{13}$[0-9X]{10}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?(?:[0-9]+[- ]?){2}[0-9X]$/
 
@@ -41,14 +41,20 @@ const validators = {
   },
 }
 
-const CreateBook = () => {
+const BookForm = (
+  bookToEdit_author_first_name,
+  bookToEdit_author_last_name,
+  bookToEdit_name,
+  bookToEdit_id,
+  bookToEdit_isbn
+) => {
 
   const [state, setState] = useState({
     fields: {
-      title: '',
-      isbn: '',
-      author_first_name: '',
-      author_last_name: '',
+      title: bookToEdit_name,
+      isbn: bookToEdit_isbn,
+      author_first_name: bookToEdit_author_first_name,
+      author_last_name: bookToEdit_author_last_name,
     },
     errors: {
       title: validators.title(),
@@ -78,8 +84,11 @@ const CreateBook = () => {
     }
 
     if (isValid()) {
-      addBook(newBook)
-        .then(createdBook => push(`/book/${createdBook.id}`));
+      !bookToEdit_isbn ?
+        addBook(newBook)
+          .then(createdBook => push(`/book/${createdBook.id}`)) :
+        updateBook(newBook, bookToEdit_id)
+          .then(updatedBook => push(`/book/${updatedBook.id}`))
     }
   }
 
@@ -121,7 +130,7 @@ const CreateBook = () => {
 
   return (
     <>
-    <h1>Create New Book</h1>
+    { !bookToEdit_isbn && <h1>Create New Book</h1> }
     <div className="CreateBook mt-4 container d-flex justify-content-center">
       <form onSubmit={onSubmit} style={{ maxWidth: 500 }}>
         <div className="mb-3">
@@ -175,4 +184,4 @@ const CreateBook = () => {
   );
 };
 
-export default CreateBook;
+export default BookForm;

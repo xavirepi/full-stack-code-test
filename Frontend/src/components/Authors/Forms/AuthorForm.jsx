@@ -17,7 +17,11 @@ const validators = {
   },
 }
 
-const CreateAuthor = ({ author_name, author_last_name, authorToEdit_id }) => {
+const AuthorForm = ({ 
+  author_name, 
+  author_last_name, 
+  authorToEdit_id 
+}) => {
 
   const [state, setState] = useState({
     fields: {
@@ -121,4 +125,4 @@ const CreateAuthor = ({ author_name, author_last_name, authorToEdit_id }) => {
   );
 };
 
-export default CreateAuthor;
+export default AuthorForm;

@@ -1,0 +1,13 @@
+@import '../../styles/base.scss';
+
+.Books {
+  &__list {
+    display: flex;
+    justify-content: center;
+    background-color: $secondary-color;
+    border-radius: 1rem;
+    margin: 1rem;
+    max-width: 60%;
+    padding: 0 0.5rem;
+  }
+}

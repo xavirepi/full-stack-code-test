@@ -24,7 +24,8 @@ const EditAuthor = () => {
           </div>
         ) : (
           <>
-            <h1>Edit Author: {authorToEdit.first_name} {authorToEdit.last_name}</h1>
+            <h4>Editing Author:</h4>
+            <h1>{authorToEdit.first_name} {authorToEdit.last_name}</h1>
             <AuthorForm 
               author_name={authorToEdit.first_name}
               author_last_name={authorToEdit.last_name}

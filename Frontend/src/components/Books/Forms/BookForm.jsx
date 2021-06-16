@@ -51,10 +51,10 @@ const BookForm = (
 
   const [state, setState] = useState({
     fields: {
-      title: bookToEdit_name,
-      isbn: bookToEdit_isbn,
-      author_first_name: bookToEdit_author_first_name,
-      author_last_name: bookToEdit_author_last_name,
+      title: '',
+      isbn: '',
+      author_first_name: '',
+      author_last_name: '',
     },
     errors: {
       title: validators.title(),
@@ -130,9 +130,9 @@ const BookForm = (
 
   return (
     <>
-    { !bookToEdit_isbn && <h1>Create New Book</h1> }
+    { bookToEdit_name && <h1>Create New Book</h1> }
     <div className="CreateBook mt-4 container d-flex justify-content-center">
-      <form onSubmit={onSubmit} style={{ maxWidth: 500 }}>
+      <form onSubmit={onSubmit} style={{ maxWidth: '20rem' }}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">Book Title</label>
           <input
@@ -154,7 +154,7 @@ const BookForm = (
         </div>
 
         <div className="mb-3">
-          <label htmlFor="author_first_name" className="form-label">Author</label>
+          <label htmlFor="author_first_name" className="form-label">Author Info</label>
           <input
               className={`form-control ${touched.author_first_name && errors.author_first_name ? 'is-invalid' : ''}`}
               type="text" id="author_first_name" name="author_first_name" placeholder='First Name...'
@@ -172,10 +172,10 @@ const BookForm = (
           <div className="invalid-feedback">{errors.author_last_name}</div>
         </div>
         <small className="text-secondary">
-            Check the <Link to="/authors/">list of authors</Link> to check whether the author has been registered
-          </small>
+          Check the <Link to="/books/" target='_blank'>list of books</Link> to check whether the author has been registered
+        </small>
 
-        <button type="submit" className="btn btn-outline-primary" disabled={!isValid()}>
+        <button type="submit" disabled={!isValid()}>
           Submit
         </button>
       </form>

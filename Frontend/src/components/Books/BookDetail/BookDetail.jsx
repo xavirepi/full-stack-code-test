@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import './BookDetail.scss';
+
 import { useParams } from 'react-router';
 import SyncLoader from "react-spinners/SyncLoader";
 import { getOneBook } from '../../../services/BookService';
+
 
 const BookDetail = () => {
   const [book, setBook] = useState();
@@ -17,7 +20,7 @@ const BookDetail = () => {
   }, [id]);
 
   return (
-    <div className="Book Detail">
+    <div className="BookDetail">
       { !book ? (
           <div>
             <h1>Book Page</h1>

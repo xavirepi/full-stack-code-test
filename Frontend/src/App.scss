@@ -23,8 +23,25 @@
       }
     }
 
+    header {
+      a {
+        color: $bootstrap-gray;
+      }
+    }
+
     button {
-      background: $terciary-color;
+      background: $primary-color;
+      border: none;
+      border-radius: 1.5rem;
+      padding: 0.4rem 2rem;
+      min-width: 20vw;
+
+      &:hover {
+        background: $secondary-color;
+        a {
+          color: $primary-color;
+        }
+      }
     }
 
     header {

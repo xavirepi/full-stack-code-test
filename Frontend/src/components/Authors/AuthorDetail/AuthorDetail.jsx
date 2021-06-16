@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SyncLoader from "react-spinners/SyncLoader";
 
+import './AuthorDetail.scss';
+
 import { useParams } from 'react-router';
 import { getOneAuthor } from '../../../services/AuthorService';
 import { getAllBooks } from '../../../services/BookService';
@@ -34,20 +36,22 @@ const AuthorDetail = () => {
             <SyncLoader color='#351d5c'/>
           </div>
         ) : (
-            <div className="">
-                <h1>{author.first_name} {author.last_name}'s Author Page</h1>
+            <div>
+                <h4>Author's Page</h4>
+                <h1>{author.first_name} {author.last_name}</h1>
                 <br/>
-                <h4>Books by author</h4>
+                <h4>Books by author: {!authorBooks && 'No books'}</h4>
                 {
-                  authorBooks && authorBooks.map(book => (
+                  authorBooks &&
+                  authorBooks.map(book => (
                     <div key={book.id}>
                       <Link to={`/book/${book.id}`}>{book.name}</Link>
                     </div>
                   ))
                 }
-              <p>
+              <button>
                 <Link to={`/author/update/${author.id}`}>Update Author</Link>
-              </p>
+              </button>
             </div>
           )
       }

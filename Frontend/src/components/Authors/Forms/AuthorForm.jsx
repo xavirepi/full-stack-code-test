@@ -25,8 +25,8 @@ const AuthorForm = ({
 
   const [state, setState] = useState({
     fields: {
-      first_name: author_name,
-      last_name: author_last_name ,
+      first_name: '',
+      last_name: '',
     },
     errors: {
       first_name: validators.first_name(), 
@@ -92,14 +92,14 @@ const AuthorForm = ({
 
   return (
     <>
-    { !author_name && <h1> Create New Author</h1> }
+    { !author_name && <h1>Create New Author</h1> }
     <div className="CreateAuthor mt-4 container d-flex justify-content-center">
-      <form onSubmit={onSubmit} style={{ maxWidth: 500 }}>
+      <form onSubmit={onSubmit} style={{ maxWidth: '20rem' }}>
         <div className="mb-3">
-          <label htmlFor="first_name" className="form-label">Author</label>
+          <label htmlFor="first_name" className="form-label">Author Info</label>
           <input
               className={`form-control ${touched.first_name && errors.first_name ? 'is-invalid' : ''}`}
-              type="text" id="first_name" name="first_name" placeholder={author_name && 'First Name...'}
+              type="text" id="first_name" name="first_name" placeholder='First Name...'
               value={first_name} onChange={onChange} onBlur={onBlur} onFocus={onFocus}
           />
           <div className="invalid-feedback">{errors.first_name}</div>
@@ -108,15 +108,15 @@ const AuthorForm = ({
         <div className="mb-3">
           <input
               className={`form-control ${touched.last_name && errors.last_name ? 'is-invalid' : ''}`}
-              type="text" id="last_name" name="last_name" placeholder={author_last_name && 'Last Name...'}
+              type="text" id="last_name" name="last_name" placeholder='Last Name...'
               value={last_name} onChange={onChange} onBlur={onBlur} onFocus={onFocus}
           />
           <div className="invalid-feedback">{errors.last_name}</div>
         </div>
         <small className="text-secondary">
-          Check the <Link to="/authors/">list of authors</Link> to check whether the author has been registered
+          Check the <Link to="/authors/" target='_blank'>list of authors</Link> to check whether the author has been registered
         </small>
-        <button type="submit" className="btn btn-outline-primary" disabled={!isValid()}>
+        <button type="submit" disabled={!isValid()}>
           Submit
         </button>
       </form>

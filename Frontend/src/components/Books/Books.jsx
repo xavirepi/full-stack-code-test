@@ -25,11 +25,11 @@ const Books = () => {
         </div>
       ) : (
         books.map(book => (
-          <div className="Books__list" key={book.id}>
             <Link to={`/book/${book.id}`}>
-              <p>{book.name}</p> 
+              <div className="Books__list" key={book.id}>
+                  <p>{book.name}</p> 
+              </div>
             </Link>
-          </div>
         ))
       )
     }

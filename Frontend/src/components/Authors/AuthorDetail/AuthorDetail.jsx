@@ -28,16 +28,16 @@ const AuthorDetail = () => {
   
   return (
     <div className="AuthorDetail">
-      <h1>Author Page</h1>
       { !author ? (
           <div>
+            <h1>Author Page</h1>
             <SyncLoader color='#351d5c'/>
           </div>
         ) : (
             <div className="">
-              <p>{author.first_name} {author.last_name}</p>
-              <>
-                <p>Books</p>
+                <h1>{author.first_name} {author.last_name}'s Author Page</h1>
+                <br/>
+                <h4>Books by author</h4>
                 {
                   authorBooks && authorBooks.map(book => (
                     <div key={book.id}>
@@ -45,7 +45,6 @@ const AuthorDetail = () => {
                     </div>
                   ))
                 }
-              </>
               <p>
                 <Link to={`/author/update/${author.id}`}>Update Author</Link>
               </p>

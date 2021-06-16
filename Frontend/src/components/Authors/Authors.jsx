@@ -24,13 +24,13 @@ const Authors = () => {
         </div>
       ) : (
         authors.map(author => (
-          <div className="Authors__list" key={author.id}>
             <Link to={`/author/${author.id}`}>
-              <p>
-                {author.first_name} {author.last_name}
-              </p>
+              <div className="Authors__list" key={author.id}>
+                  <p>
+                    {author.first_name} {author.last_name}
+                  </p>
+              </div>
             </Link> 
-          </div>
         ))
       )
     }

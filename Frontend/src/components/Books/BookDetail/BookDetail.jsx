@@ -18,24 +18,26 @@ const BookDetail = () => {
 
   return (
     <div className="Book Detail">
-      <h1>Book Page</h1>
       { !book ? (
           <div>
+            <h1>Book Page</h1>
             <SyncLoader color='#351d5c'/>
           </div>
         ) : (
-            <div className="">
-              <p>Title: {book.name}</p>
+            <div>
+              <h4>Book Page</h4>
+              <h1>{book.name}</h1>
               <p>ISBN: {book.isbn}</p>
               <p>
-                Author: 
+                Author:
+                <span className='mx-1'/>
                 <Link to={`/author/${book.author.id}`}>
                   {book.author.first_name} {book.author.last_name}
                 </Link>
               </p>
-              <p>
+              <button>
                 <Link to={`/book/update/${book.id}`}>Update Book</Link>
-              </p>
+              </button>
             </div>
           )
       }

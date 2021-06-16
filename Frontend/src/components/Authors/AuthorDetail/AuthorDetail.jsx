@@ -36,16 +36,19 @@ const AuthorDetail = () => {
         ) : (
             <div className="">
               <p>{author.first_name} {author.last_name}</p>
-                <>
-                  <p>Books</p>
-                  {
-                    authorBooks && authorBooks.map(book => (
-                      <div key={book.id}>
-                        <Link to={`/book/${book.id}`}>{book.name}</Link>
-                      </div>
-                    ))
-                  }
-                </>
+              <>
+                <p>Books</p>
+                {
+                  authorBooks && authorBooks.map(book => (
+                    <div key={book.id}>
+                      <Link to={`/book/${book.id}`}>{book.name}</Link>
+                    </div>
+                  ))
+                }
+              </>
+              <p>
+                <Link to={`/author/update/${author.id}`}>Update Author</Link>
+              </p>
             </div>
           )
       }

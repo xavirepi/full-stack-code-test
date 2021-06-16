@@ -16,7 +16,6 @@ const BookDetail = () => {
       .then(foundBook => setBook(foundBook))
   }, [id]);
 
-  
   return (
     <div className="Book Detail">
       <h1>Book Page</h1>
@@ -33,6 +32,9 @@ const BookDetail = () => {
                 <Link to={`/author/${book.author.id}`}>
                   {book.author.first_name} {book.author.last_name}
                 </Link>
+              </p>
+              <p>
+                <Link to={`/book/update/${book.id}`}>Update Book</Link>
               </p>
             </div>
           )

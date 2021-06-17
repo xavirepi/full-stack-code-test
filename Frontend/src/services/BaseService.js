@@ -6,7 +6,10 @@ export const create = (opts = {}) => {
     ...opts
   });
 
-  http.interceptors.response.use(response => response.data)
+  http.interceptors.response.use(
+    (response) => response.data,
+    (error) => Promise.reject(error)
+  );
 
   return http;
 }

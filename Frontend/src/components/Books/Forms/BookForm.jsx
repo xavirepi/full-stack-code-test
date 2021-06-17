@@ -35,8 +35,8 @@ const validators = {
 
     if (!value) {
       message = 'Author name or official nickname is required';
-    } else if (value.length < 4) {
-      message = 'Name must be at least 4 characters long';
+    } else if (value.length < 2) {
+      message = 'Name must be at least 2 characters long';
     } else if (typeof value !== 'string') {
       message = 'Please, provide a valid name';
     }
@@ -62,6 +62,7 @@ const BookForm = ({ bookToEdit_id }) => {
   });
 
   const [touched, setTouched] = useState({});
+  const [formError, setFormError] = useState(); // Handles errors from the backend;
   const { push } = useHistory();
 
   const isValid = () => {
@@ -84,9 +85,11 @@ const BookForm = ({ bookToEdit_id }) => {
     if (isValid()) {
       !bookToEdit_id ?
         addBook(newBook)
-          .then(createdBook => push(`/book/${createdBook.id}`)) :
+          .then(createdBook => push(`/book/${createdBook.id}`))
+          .catch(errors => setFormError(errors.response.data.message)) :
         updateBook(newBook, bookToEdit_id)
           .then(updatedBook => push(`/book/${updatedBook.id}`))
+          .catch(errors => setFormError(errors.response.data.message))
     }
   }
 
@@ -169,6 +172,14 @@ const BookForm = ({ bookToEdit_id }) => {
           />
           <div className="invalid-feedback">{errors.author_last_name}</div>
         </div>
+
+        {
+          formError && (
+            <div className="d-flex justify-content-center mt-3 text-danger">
+              <p><small>{formError}</small></p>
+            </div>
+          )
+        }
 
         <small className="text-secondary">
           Check the <Link to="/books/" target='_blank'>list of books</Link> to check whether the author has been registered

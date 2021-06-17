@@ -9,8 +9,8 @@ const validators = {
 
     if (!value) {
       message = 'Author name or official nickname is required';
-    } else if (value.length < 4) {
-        message = 'Name must be at least 4 characters long';
+    } else if (value.length < 2) {
+        message = 'Name must be at least 2 characters long';
     } else if (typeof value !== 'string') {
         message = 'Please, provide a valid name';
     }
@@ -32,6 +32,7 @@ const AuthorForm = ({ authorToEdit_id }) => {
   });
 
   const [touched, setTouched] = useState({});
+  const [formError, setFormError] = useState(); // Handles errors from the backend;
   const { push } = useHistory();
 
   const isValid = () => {
@@ -46,9 +47,11 @@ const AuthorForm = ({ authorToEdit_id }) => {
     if (isValid()) {
       !authorToEdit_id ?
         addAuthor(fields)
-          .then(createdAuthor => push(`/author/${createdAuthor.id}`)) :
+          .then(createdAuthor => push(`/author/${createdAuthor.id}`))
+          .catch(errors => setFormError(errors.response.data.message)) :
         updateAuthor(fields, authorToEdit_id)
           .then(updatedAuthor => push(`/author/${updatedAuthor.id}`))
+          .catch(errors => setFormError(errors.response.data.message))
     }
   }
 
@@ -111,6 +114,14 @@ const AuthorForm = ({ authorToEdit_id }) => {
           />
           <div className="invalid-feedback">{errors.last_name}</div>
         </div>
+
+        {
+          formError && (
+            <div className="d-flex justify-content-center mt-3 text-danger">
+              <p><small>{formError}</small></p>
+            </div>
+          )
+        }
 
         <small className="text-secondary">
           Check the <Link to="/authors/" target='_blank'>list of authors</Link> to check whether the author has been registered

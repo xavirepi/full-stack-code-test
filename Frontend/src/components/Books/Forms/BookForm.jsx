@@ -185,7 +185,7 @@ const BookForm = ({ bookToEdit_id }) => {
           Check the <Link to="/books/" target='_blank'>list of books</Link> to check whether the author has been registered
         </small>
 
-        <button type="submit" disabled={!isValid()}>
+        <button type="submit" className="m-3" disabled={!isValid()}>
           {!bookToEdit_id ? 'Create' : 'Update'}
         </button>
 

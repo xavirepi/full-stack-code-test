@@ -8,19 +8,21 @@ import { addBook, updateBook } from '../../../services/BookService';
 
 const validators = {
   title: value => {
-    let message
+    let message;
 
     if (!value) {
-      message = 'Title is required'
+      message = 'Title is required';
+    } else if (value.length < 2) {
+      message = 'Title must be at least 2 characters long';
     }
 
-    return message
+    return message;
   },
   isbn: value => {
-    let message
+    let message;
 
     if (!value) {
-      message = 'ISBN code is required'
+      message = 'ISBN code is required';
     } 
     // else if (value && !value.match(ISBN_PATTERN)) {
     //   message = 'Please, provide a valid ISBN code'
@@ -29,25 +31,21 @@ const validators = {
     return message
   },
   author_first_name: value => {
-    let message
+    let message;
 
     if (!value) {
-      message = 'Author name or official nickname is required'
+      message = 'Author name or official nickname is required';
+    } else if (value.length < 4) {
+      message = 'Name must be at least 4 characters long';
     } else if (typeof value !== 'string') {
-      message = 'Please, provide a valid name'
+      message = 'Please, provide a valid name';
     }
 
-    return message
+    return message;
   },
 }
 
-const BookForm = (
-  bookToEdit_author_first_name,
-  bookToEdit_author_last_name,
-  bookToEdit_name,
-  bookToEdit_id,
-  bookToEdit_isbn
-) => {
+const BookForm = ({ bookToEdit_id }) => {
 
   const [state, setState] = useState({
     fields: {
@@ -84,7 +82,7 @@ const BookForm = (
     }
 
     if (isValid()) {
-      !bookToEdit_isbn ?
+      !bookToEdit_id ?
         addBook(newBook)
           .then(createdBook => push(`/book/${createdBook.id}`)) :
         updateBook(newBook, bookToEdit_id)
@@ -129,8 +127,8 @@ const BookForm = (
   const { errors } = state;
 
   return (
-    <>
-    { bookToEdit_name && <h1>Create New Book</h1> }
+    <div className="BookForm">
+    { !bookToEdit_id && <h1>Create New Book</h1> }
     <div className="CreateBook mt-4 container d-flex justify-content-center">
       <form onSubmit={onSubmit} style={{ maxWidth: '20rem' }}>
         <div className="mb-3">
@@ -176,11 +174,13 @@ const BookForm = (
         </small>
 
         <button type="submit" disabled={!isValid()}>
-          Submit
+          {!bookToEdit_id ? 'Create' : 'Update'}
         </button>
+        <br/>
+        <Link to={!bookToEdit_id ? `/` : `/book/${bookToEdit_id}`}>Back</Link>
       </form>
     </div>
-    </>
+    </div>
   );
 };
 

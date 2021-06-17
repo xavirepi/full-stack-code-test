@@ -35,17 +35,24 @@
       border-radius: 1.5rem;
       padding: 0.4rem 2rem;
       min-width: 20vw;
+      color: $link-button-color;
 
-      &:hover {
+      a {
+        color: $link-button-color;
+      }
+
+      &:hover:enabled {
         background: $secondary-color;
+        color: $primary-color;
+
         a {
           color: $primary-color;
         }
       }
-    }
 
-    header {
-      color: $terciary-color;
+      &:disabled {
+        opacity: 0.3;
+      }
     }
   }
   

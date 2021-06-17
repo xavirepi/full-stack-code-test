@@ -5,23 +5,21 @@ import { addAuthor, updateAuthor } from '../../../services/AuthorService';
 
 const validators = {
   first_name: value => {
-    let message
+    let message;
 
     if (!value) {
-      message = 'Author name or official nickname is required'
+      message = 'Author name or official nickname is required';
+    } else if (value.length < 4) {
+        message = 'Name must be at least 4 characters long';
     } else if (typeof value !== 'string') {
-      message = 'Please, provide a valid name'
+        message = 'Please, provide a valid name';
     }
 
-    return message
+    return message;
   },
 }
 
-const AuthorForm = ({ 
-  author_name, 
-  author_last_name, 
-  authorToEdit_id 
-}) => {
+const AuthorForm = ({ authorToEdit_id }) => {
 
   const [state, setState] = useState({
     fields: {
@@ -46,7 +44,7 @@ const AuthorForm = ({
     e.preventDefault();
 
     if (isValid()) {
-      !author_name ?
+      !authorToEdit_id ?
         addAuthor(fields)
           .then(createdAuthor => push(`/author/${createdAuthor.id}`)) :
         updateAuthor(fields, authorToEdit_id)
@@ -72,7 +70,7 @@ const AuthorForm = ({
   const onBlur = (e) => {
     const { name } = e.target;
 
-    author_name && setTouched((prevTouched) => ({
+    authorToEdit_id && setTouched((prevTouched) => ({
       ...prevTouched,
       [name]: true
     }));
@@ -81,7 +79,7 @@ const AuthorForm = ({
   const onFocus = (e) => {
     const { name } = e.target;
 
-    author_name && setTouched((prevTouched) => ({
+    authorToEdit_id && setTouched((prevTouched) => ({
       ...prevTouched,
       [name]: false
     }));
@@ -91,8 +89,8 @@ const AuthorForm = ({
   const { errors } = state;
 
   return (
-    <>
-    { !author_name && <h1>Create New Author</h1> }
+    <div className="AuthorForm">
+    { !authorToEdit_id && <h1>Create New Author</h1> }
     <div className="CreateAuthor mt-4 container d-flex justify-content-center">
       <form onSubmit={onSubmit} style={{ maxWidth: '20rem' }}>
         <div className="mb-3">
@@ -117,11 +115,13 @@ const AuthorForm = ({
           Check the <Link to="/authors/" target='_blank'>list of authors</Link> to check whether the author has been registered
         </small>
         <button type="submit" disabled={!isValid()}>
-          Submit
+          {!authorToEdit_id ? 'Create' : 'Update'}
         </button>
+        <br/>
+        <Link to={!authorToEdit_id ? `/` : `/author/${authorToEdit_id}`}>Back</Link>
       </form>
     </div>
-    </>
+    </div>
   );
 };
 

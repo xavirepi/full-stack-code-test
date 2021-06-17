@@ -30,13 +30,7 @@ const EditBook = () => {
               By {bookToEdit.author.first_name} {bookToEdit.author.last_name}
             </h5>
             <small className='text-secondary'>ISBN: {bookToEdit.isbn}</small>
-            <BookForm 
-              bookToEdit_author_first_name={bookToEdit.author.first_name}
-              bookToEdit_author_last_name={bookToEdit.author.last_name}
-              bookToEdit_name={bookToEdit.name}
-              bookToEdit_id={id}
-              bookToEdit_isbn={bookToEdit.isbn}
-            />
+            <BookForm bookToEdit_id={id}/>
           </>
         )
       }

@@ -8,3 +8,13 @@ const authorsData = require('../../data/authors.json');
 afterAll(async () => {
   await mongoose.connection.close();
 });
+
+beforeAll(async () => {
+  await Author.create(authorsData);
+});
+
+it('get all authors', async () => {
+  const res = await request.get('/api/authors/')
+
+  expect(res.status).toBe(200);
+});

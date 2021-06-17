@@ -50,6 +50,10 @@ app.use((error, req, res, next) => { // Middleware used to create errors so we d
 
 const port = Number(process.env.PORT || 3001); // The API will run on port 3001 while the front end will do it on port 3000
 
-app.listen(port, () => {
-  console.log(`Ready! Listening on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Ready! Listening on port ${port}`);
+  })
+}
+
+module.exports = app;

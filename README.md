@@ -4,6 +4,26 @@ In this test, you are expected to write a small web application to manage a list
 
 There is no need to create a PR back to this repository once completed, please provide a link to your project repository for review.
 
+## Instructions to run the app on local environment
+Open your terminal and run the following command to download the project:
+  ```
+  git clone https://github.com/xavirepi/full-stack-code-test.git
+  ```
+To start the API (from the same root directory where the repo was cloned):
+  ```
+  cd API
+  npm install
+  npm run seeds
+  npm run dev
+  ```
+To start the React App (from the API directory):
+  ```
+  cd ../Frontend
+  npm install
+  npm start
+  ```
+ Once you run npm start the app should open automatically on your default browser. Otherwise go to http://localhost:3000/ after running it.
+
 ## Backend implementation
 
 Use the following structure to model the data

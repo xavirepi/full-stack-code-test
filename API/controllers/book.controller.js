@@ -35,7 +35,7 @@ module.exports.addBook = (req, res, next) => {
     .populate('author')
     .then(foundBook => {
       foundBook ?
-      next(createError(403, 'Invalid ISBN')) :
+      next(createError(403, 'This ISBN belongs to an already registered book')) :
       Author.findOne({ $and: [{ first_name }, { last_name }] })
         .then(foundAuthor => {
           if (foundAuthor) {
@@ -61,20 +61,29 @@ module.exports.addBook = (req, res, next) => {
 
 module.exports.updateBook = (req, res, next) => {
   // Updates an existing book - Expects a JSON body
-  Book.findById(req.params.id)
-    .then(foundBook => {
-      if (!foundBook) {
-        next(createError(404, 'This book does not exist on the database'))
-      }
-      
-      Object.entries(req.body).forEach(([key, value]) => {
-        console.log(req.body)
-        foundBook[key] = value;
-      })
+  const { name, isbn, author } = req.body;
+  const { first_name, last_name } = author;
 
-      return foundBook.save()
-        .then(updatedBook => {
-          res.status(200).json(updatedBook);
+  Book.findOne({ $or: [{ name }, { isbn }, {first_name}] })
+    .populate('author')
+    .then(foundBook => {
+      foundBook ?
+      next(createError(403, 'This ISBN belongs to an already registered book')) :
+      Book.findById(req.params.id)
+        .then(foundBook => {
+          if (!foundBook) {
+            next(createError(404, 'This book does not exist on the database'))
+          }
+          
+          Object.entries(req.body).forEach(([key, value]) => {
+            console.log(req.body)
+            foundBook[key] = value;
+          })
+
+          return foundBook.save()
+            .then(updatedBook => {
+              res.status(200).json(updatedBook);
+            })
         })
     })
     .catch(next);

@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => { // Middleware used to create errors so we don't have to create them every time inside the controllers
-  if (error instanceof mongoose.Error.ValidationError) error = createError(400, '') // Handles mongoose validations errors
+  if (error instanceof mongoose.Error.ValidationError) error = createError(400, 'Validation Error') // Handles mongoose validations errors
   else if (error instanceof mongoose.Error.CastError) error = createError(404, 'Resource not found')
   else if (error.message.includes('E11000')) error = createError(400, 'Already exists') // MongoDB duplicates error
   else if (!error.status) error = createError(500, error)

@@ -2,14 +2,13 @@
 
 .App {
   text-align: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  margin: 2rem;
-  border-radius: 0.5rem;
+  // min-height: 100vh;
+  // min-width: 100vw;
+  // border-radius: 0.5rem;
   background-color: #f4f4f4;
 
   &__content {
-    padding: 1rem 4rem;
+    padding-top: 1rem;
 
     h1 {
       color: $primary-color;
@@ -26,6 +25,17 @@
     header {
       a {
         color: $bootstrap-gray;
+      }
+    }
+
+    footer {
+      a {
+        text-decoration: none;
+        color: $link-button-color;
+
+        &:hover {
+          color: $link-color;
+        }
       }
     }
 

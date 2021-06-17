@@ -111,14 +111,18 @@ const AuthorForm = ({ authorToEdit_id }) => {
           />
           <div className="invalid-feedback">{errors.last_name}</div>
         </div>
+
         <small className="text-secondary">
           Check the <Link to="/authors/" target='_blank'>list of authors</Link> to check whether the author has been registered
         </small>
-        <button type="submit" disabled={!isValid()}>
+
+        <button type="submit" className="m-3" disabled={!isValid()}>
           {!authorToEdit_id ? 'Create' : 'Update'}
         </button>
+
         <br/>
-        <Link to={!authorToEdit_id ? `/` : `/author/${authorToEdit_id}`}>Back</Link>
+
+        <Link to={!authorToEdit_id ? `/` : `/author/${authorToEdit_id}`}>Cancel</Link>
       </form>
     </div>
     </div>

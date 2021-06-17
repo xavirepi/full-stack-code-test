@@ -169,6 +169,7 @@ const BookForm = ({ bookToEdit_id }) => {
           />
           <div className="invalid-feedback">{errors.author_last_name}</div>
         </div>
+
         <small className="text-secondary">
           Check the <Link to="/books/" target='_blank'>list of books</Link> to check whether the author has been registered
         </small>
@@ -176,8 +177,10 @@ const BookForm = ({ bookToEdit_id }) => {
         <button type="submit" disabled={!isValid()}>
           {!bookToEdit_id ? 'Create' : 'Update'}
         </button>
+
         <br/>
-        <Link to={!bookToEdit_id ? `/` : `/book/${bookToEdit_id}`}>Back</Link>
+
+        <Link to={!bookToEdit_id ? `/` : `/book/${bookToEdit_id}`}>Cancel</Link>
       </form>
     </div>
     </div>

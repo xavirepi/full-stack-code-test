@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.scss';
 import AppRouter from './components/AppRouter';
 import Header from './components/Header';

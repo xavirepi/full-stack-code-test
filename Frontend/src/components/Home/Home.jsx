@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import Footer from '../Footer';
 import './Home.scss'
 
 import Books from './Books';
@@ -10,6 +11,7 @@ import Forms from './Forms';
 
 const Home = () => {
   return (
+    <>
     <div className='Home container'>
       <div className='card-group'>
         <Books/>
@@ -17,6 +19,8 @@ const Home = () => {
         <Forms/>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

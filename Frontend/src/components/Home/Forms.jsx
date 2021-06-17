@@ -13,7 +13,7 @@ const Form = () => {
           Nullam ipsum neque, sodales eu rutrum hendrerit, elementum id purus. 
           Fusce eleifend, justo nec finibus tristique, augue orci auctor nisl, ut tincidunt enim velit ac quam. 
         </p>
-        <Link to='/book/create/'>Add New Book</Link>
+        <Link className='m-3 d-block' to='/book/create/'>Add New Book</Link>
         <Link to='/author/create/'>Add New Author</Link>
       </div>
     </div>

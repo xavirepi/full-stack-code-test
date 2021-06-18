@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import Header from '../../components/Header';
 
 describe('Header component', () => {
-  test('It renders a DIV', () => {
+  test('It renders a Header Component', () => {
     const { debug } = render(<Router><Header /></Router>)
   
     debug()

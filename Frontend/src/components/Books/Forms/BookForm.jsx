@@ -130,7 +130,7 @@ const BookForm = ({ bookToEdit_id }) => {
   const { errors } = state;
 
   return (
-    <div className="BookForm">
+    <div className="BookForm pb-3">
     { !bookToEdit_id && <h1>Create New Book</h1> }
     <div className="CreateBook mt-4 container d-flex justify-content-center">
       <form onSubmit={onSubmit} style={{ maxWidth: '20rem' }}>

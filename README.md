@@ -11,18 +11,18 @@ Open your terminal and run the following command to download the project:
   ```
 To start the API (from the same root directory where the repo was cloned):
   ```
-  cd API
+  cd full-stack-code-test/API
   npm install
   npm run seeds
   npm run dev
   ```
-To start the React App (from the API directory):
+To start the React App open a new terminal tab or window and got to full-stack-code-test directory then:
   ```
-  cd ../Frontend
+  cd Frontend
   npm install
   npm start
   ```
- Once you run npm start the app should open automatically on your default browser. Otherwise go to http://localhost:3000/ after running it.
+Once you run npm start the app should open automatically on your default browser. Otherwise go to http://localhost:3000/ after running it.
 
 ## Backend implementation
 

@@ -6,8 +6,6 @@ const Book = require('../../models/Book.model');
 const Author = require('../../models/Author.model');
 const booksData = require('../../data/books.json');
 
-let id = "";
-
 afterAll(async () => {
   await mongoose.connection.close();
 });

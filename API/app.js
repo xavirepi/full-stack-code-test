@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const createError = require('http-errors');
 const logger = require('morgan');
 const express = require('express');
-const cors = require('cors'); // Uncomment upon deployment
-// const cors = require('./config/cors.config'); // Comment upon deployment
+const cors = require('cors'); // Comment upon deployment
+// const cors = require('./config/cors.config'); // Uncomment upon deployment
 
 require('./config/db.config');
 
@@ -13,7 +13,6 @@ const app = express();
 
 /* Middlewares */
 
-//app.use(passport.initialize())
 app.use(express.json());
 app.use(logger('dev'));
 app.use(cors()); // Comment upon deployment

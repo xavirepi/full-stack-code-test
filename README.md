@@ -16,7 +16,7 @@ To start the API (from the same root directory where the repo was cloned):
   npm run seeds
   npm run dev
   ```
-To start the React App open a new terminal tab or window and got to full-stack-code-test directory then:
+To start the React App open a new terminal tab or window and go to full-stack-code-test directory then:
   ```
   cd Frontend
   npm install

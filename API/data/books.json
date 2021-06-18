@@ -1,15 +1,9 @@
 [{
   "name": "deposit neural-net Borders",
   "isbn": "454-358-0842",
-  "author": {
-    "first_name": "Javier",
-    "last_name": "Repilado López"
-  }
+  "author": "60c8dafc021c666acbf112b9"
 }, {
   "name": "synergies",
   "isbn": "571-294-1611",
-  "author": {
-    "first_name": "Javier",
-    "last_name": "Repilado López"
-  }
+  "author": "60c8dafc021c666acbf112b9"
 }]

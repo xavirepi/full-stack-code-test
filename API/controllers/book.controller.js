@@ -68,7 +68,6 @@ module.exports.updateBook = (req, res, next) => {
       }
       
       Object.entries(req.body).forEach(([key, value]) => {
-        console.log(req.body)
         foundBook[key] = value;
       })
 

@@ -14,27 +14,18 @@ beforeAll(async () => {
 });
 
 describe('Author Controller', () => {
-  // console.log('Authors Controller');
-
   test('Get all authors', async () => {
-    // console.log('Get all authors list');
     const res = await request.get('/api/authors/');
 
     expect(res.status).toBe(200);
     expect(res.status).not.toBeGreaterThanOrEqual(400);
+
+    expect(res.body.length).not.toBeLessThanOrEqual(0);
+    expect(res.body.length).not.toBe(null);
   });
 
-  test('Get one author', async () => {
-    // console.log('Get one author');
-    const id = "60c8dafc021c666acbf112b9"; // Author: Javier Repilado
-    const res = await request.get(`/api/author/${id}/`);
-
-    expect(res.status).toBe(200);
-    expect(res.status).not.toBeGreaterThanOrEqual(404);
-  });
-
-
-  test('Create one author', async () => {
+  test('Create one author and get author detail', async () => {
+    /* CREATE AUTHOR TEST */
     const body = {
       "first_name": 'Test_First_Name',
       "last_name": 'Test_Last_Name'
@@ -44,19 +35,60 @@ describe('Author Controller', () => {
 
     expect(res.status).toBe(201);
     expect(res.status).not.toBeGreaterThanOrEqual(400);
+
+    expect(res.body.first_name).not.toBe(null);
+    expect(res.body.first_name).toBe("Test_First_Name");
+    expect(res.body.last_name).toBe("Test_Last_Name");
+
+    /* GET AUTHOR DETAIL TEST */
+    // Get One Author endpoint tested here as the id is changed dinamically on each test run and it throws an error if tested independently.
+    const { id } = res.body;
+
+    const detailRes = await request.get(`/api/author/${id}`);
+  
+    expect(detailRes.status).toBe(200);
+    expect(detailRes.status).not.toBeGreaterThanOrEqual(400);
+
+    expect(detailRes.body.first_name).not.toBe(null);
+    expect(detailRes.body.first_name).toBe("Test_First_Name");
+    expect(detailRes.body.last_name).toBe("Test_Last_Name");
+    expect(detailRes.body.id).toBeDefined();
   });
 
-  test('Update one author', async () => {
+  test('Update one author and get author detail', async () => {
+    /* CREATE AUTHOR TEST */
     const body = {
-      id: "60c8dafc021c666acbf112b9", // Author: Javier Repilado
-      first_name: 'Update_First_Name',
-      last_name: 'Update_Last_Name'
+      "first_name": 'Test2_First_Name',
+      "last_name": 'Test2_Last_Name'
     }
 
-    const res = await request.put(`/api/author/${body.id}`).send(body);
+    const res = await request.post(`/api/author/`).send(body);
 
     expect(res.status).toBe(201);
     expect(res.status).not.toBeGreaterThanOrEqual(400);
+
+    expect(res.body.first_name).not.toBe(null);
+    expect(res.body.first_name).toBe("Test2_First_Name");
+    expect(res.body.last_name).toBe("Test2_Last_Name");
+
+    /* GET AUTHOR DETAIL TEST */
+    // Get One Author endpoint tested here as the id is changed dinamically on each test run and it throws an error if tested independently.    
+    const { id } = res.body;
+
+    const updatedBody = {
+      "first_name": 'First_Name_Update',
+      "last_name": 'Last_Name_Update'
+    }
+    
+    const detailRes = await request.put(`/api/author/${id}`).send(updatedBody);
+
+    expect(detailRes.status).toBe(200);
+    expect(detailRes.status).not.toBeGreaterThanOrEqual(400);
+
+    expect(detailRes.body.first_name).not.toBe(null);
+    expect(detailRes.body.first_name).toBe("First_Name_Update");
+    expect(detailRes.body.last_name).toBe("Last_Name_Update");
+    expect(detailRes.body.id).toBeDefined();
   });
 
 });

@@ -4,6 +4,13 @@ In this test, you are expected to write a small web application to manage a list
 
 There is no need to create a PR back to this repository once completed, please provide a link to your project repository for review.
 
+## Deployed Application
+
+#### Important: Please note that the following links cant take up to 10 seconds to load.
+React App deployed on Heroku: https://front-soamee-full-stack-test.herokuapp.com/
+
+Public RESTful API deployed on Heroku: https://api-soamee-full-stack-test.herokuapp.com/api/ (You can use this URL on your own front end application or to test its endpoints).
+
 ## Instructions to run the app on local environment
 Open your terminal and run the following command to download the project:
   ```

@@ -127,6 +127,8 @@ const AuthorForm = ({ authorToEdit_id }) => {
           Check the <Link to="/authors/" target='_blank'>list of authors</Link> to check whether the author has been registered
         </small>
 
+        <br/>
+
         <button type="submit" className="m-3" disabled={!isValid()}>
           {!authorToEdit_id ? 'Create' : 'Update'}
         </button>

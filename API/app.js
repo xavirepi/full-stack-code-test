@@ -16,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(logger('dev'));
 app.use(cors()); // Comment upon deployment
+// app.use(cors); // Uncomment upon deployment
 
 /* Routes */
 const routes = require('./config/routes.config');
